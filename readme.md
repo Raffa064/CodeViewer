@@ -14,11 +14,12 @@ NOTE: The params must be **separated by "&"**
 | Param       | Default value                   |  Description                       |
 | :---------- | :------------------------------ | :--------------------------------- |
 | theme       | github-dark                     | [Shiki highlighter theme](#themes) |
+| light       | false                           | Light theme flag                   |
 | lang        | js                              | What is the code lenguage          |
 | code        | console.log('Code Viewer');     | Code in plain text                 |
 | code-url    | none                            | Url to a code file                 |
 | name        | Untitled.txt / Last url segment | File name                          |
-| title-color | fff8                            | File name color (HEX)              |
+| title-color | fff8 (or 0008 when ligh mode)   | File name color (HEX)              |
 
 NOTE: The title color is a hexadecimal value but it shouldn't contain "#"
 

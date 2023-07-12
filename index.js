@@ -1,12 +1,22 @@
 //URL params
 const params = getUrlParams()
 
-var theme = params['theme'] || 'github-dark'
+var light = params["light"] || false
+var theme = params['theme'] || 'github-light'
 var lang = params['lang'] || 'js'
 var name = params['name'] || getNameFromUrl(params['code-url']) || 'Undefined.txt'
 var code = params['code'] || `console.log('Code Viewer');`
 
-var titleColor = params["title-color"] || "fff8"
+var titleColor = params["title-color"] || light?"0008":"fff8"
+
+// Light mode
+if (light) {
+    var lightCss = document.createElement('link')
+    lightCss.rel = "stylesheet"
+    lightCss.href = "index-light.css"
+    document.querySelector('head').appendChild(lightCss)
+}
+
 // Window title / Page title
 document.title = "CodeViewer: " + name
 const fileName = document.querySelector('#file-name')

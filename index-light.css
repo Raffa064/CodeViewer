@@ -1,0 +1,45 @@
+
+body,
+#output {
+    background: #eee;
+}
+
+#loading {
+    color: #222;
+}
+
+.line::before {
+    color: #0007;
+    border-right: 2px solid #0005;
+}
+
+.line {
+    border: 1px solid #0000;
+}
+
+.line:hover {
+    border: 1px dashed #0001;
+}
+
+.line:hover::before {
+    color: #000d;
+    border-right: 2px solid #0007;
+}
+
+#click-n-copy {
+    color: #000;
+    background: #eee2;
+    border: 1px solid #6668;
+}
+
+#click-n-copy.sucess {
+    color: #0b0;
+    background: #0d06;
+    border: 1px solid #0a0e;
+}
+
+#click-n-copy.error {
+    color: #f00;
+    background: #d005;
+    border: 1px solid #a009;
+}
