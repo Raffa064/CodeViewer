@@ -459,7 +459,7 @@
             var codeMode = toggleUrlModeElt.checked ? "code-url" : "code"
             var code = toggleUrlModeElt.checked ? codeUrlElt.value : encodeURI(codeElt.value)
             var lang = selectLangElt.value
-            var name = nameElt.value
+            var name = encodeURI(nameElt.value)
 
             titleColor = titleColor.substring(1, titleColor.length) // Remove #
 

@@ -11,7 +11,7 @@ var titleColor = params["title-color"] || "fff8"
 document.title = "CodeViewer: " + name
 const fileName = document.querySelector('#file-name')
 fileName.style["color"] = "#" + titleColor
-fileName.innerText = name
+fileName.innerText = decodeURI(name)
 fileName.onclick = () => {
     const url = params["code-url"]
     if (url) window.location.replace(url)
