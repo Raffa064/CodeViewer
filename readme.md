@@ -11,13 +11,14 @@ https://raffa064.github.io/CodeViewer?&lt;Your params here&gt;
 NOTE: The params must be **separated by "&"**
 
 ## Url params
-| Param       | Default value               |  Description                       |
-| :---------- | :-------------------------- | :--------------------------------- |
-| theme       | github-dark                 | [Shiki highlighter theme](#themes) |
-| lang        | js                          | What is the code lenguage          |
-| code        | console.log('Code Viewer'); | Code in plain text                 |
-| code-url    | none                        | Url to a code file                 |
-| title-color | fff8                        | File name color (HEX)              |
+| Param       | Default value                   |  Description                       |
+| :---------- | :------------------------------ | :--------------------------------- |
+| theme       | github-dark                     | [Shiki highlighter theme](#themes) |
+| lang        | js                              | What is the code lenguage          |
+| code        | console.log('Code Viewer');     | Code in plain text                 |
+| code-url    | none                            | Url to a code file                 |
+| name        | Untitled.txt / Last url segment | File name                          |
+| title-color | fff8                            | File name color (HEX)              |
 
 NOTE: The title color is a hexadecimal value but it shouldn't contain "#"
 
