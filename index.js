@@ -55,16 +55,68 @@ function showCode(firstTry = true) {
         .then(highlighter => {
             const htmlCode = highlighter.codeToHtml(code, { lang })
             document.getElementById('output').innerHTML = htmlCode
+            addZoom(document.querySelector('pre'))
         })
         .catch(err => {
             if (firstTry) {
                 theme = 'github-dark' // Try with github theme 
                 showCode(false)
-                return 
+                return
             }
-            
-            showError('Probably unknown lenguage "'+lang+'"')
+
+            showError('Probably unknown lenguage "' + lang + '"')
         })
+}
+
+function addZoom(elt) {
+    const size = () => parseInt(window.getComputedStyle(elt).fontSize)
+    const setSize = (size) => {
+        elt.style.fontSize = size + 'px'
+    }
+    
+    // Keyboard zoom
+    window.addEventListener('keydown', (e) => {
+        e.preventDefault()
+        console.log(e.key)
+        const keys = {
+            "-": -1,
+            "+": 1,
+            "a": -1,
+            "s": 1,
+            "k": -1,
+            "l": 1
+        }
+        if (keys[e.key]) setSize(size() + keys[e.key])
+    })
+
+    //Pinch zoom
+    var initialDistance = 0
+    var initialFontSize
+    elt.addEventListener('touchstart', (e) => {
+        e.preventDefault()
+        if (e.touches.length == 2) {
+            initialDistance = Math.hypot(
+                e.touches[0].pageX - e.touches[1].pageX,
+                e.touches[0].pageY - e.touches[1].pageY,
+            );
+            
+            initialFontSize = size()
+        }
+    })
+
+    elt.ontouchmove = (e) => {
+        e.preventDefault()
+        if (e.touches.length == 2) {
+            const distance = Math.hypot(
+                e.touches[0].pageX - e.touches[1].pageX,
+                e.touches[0].pageY - e.touches[1].pageY,
+            );
+            
+            const delta = distance - initialDistance;
+            
+            setSize(initialFontSize * delta * 0.005)
+        }
+    }
 }
 
 function showError(error) {
@@ -99,8 +151,8 @@ function getUrlParams() {
 
 function getNameFromUrl(url) {
     if (url == undefined) return null
-    
-    return url.substring(url.lastIndexOf("/")+1, url.length)
+
+    return url.substring(url.lastIndexOf("/") + 1, url.length)
 }
 
 function fromUrl(url, finishCallback) {
