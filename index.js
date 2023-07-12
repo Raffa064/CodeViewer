@@ -3,7 +3,7 @@ const params = getUrlParams()
 
 var theme = params['theme'] || 'github-dark'
 var lang = params['lang'] || 'js'
-var name = params['name'] || 'Undefined.txt'
+var name = params['name'] || getNameFromUrl(params['code-url']) || 'Undefined.txt'
 var code = params['code'] || `console.log('Code Viewer');`
 
 var titleColor = params["title-color"] || "fff8"
@@ -11,7 +11,7 @@ var titleColor = params["title-color"] || "fff8"
 document.title = "CodeViewer: " + name
 const fileName = document.querySelector('#file-name')
 fileName.style["color"] = "#" + titleColor
-fileName.innerText = name + " - " + lang
+fileName.innerText = name
 fileName.onclick = () => {
     const url = params["code-url"]
     if (url) window.location.replace(url)
@@ -41,7 +41,7 @@ cnc.onclick = () => {
 }
 
 fromUrl(params['code-url'], (codeFromUrl) => {
-    code = codeFromUrl || code
+    code = codeFromUrl || decodeURI(code)
     showCode()
 })
 
@@ -95,6 +95,12 @@ function getUrlParams() {
     }
 
     return params
+}
+
+function getNameFromUrl(url) {
+    if (url == undefined) return null
+    
+    return url.substring(url.lastIndexOf("/")+1, url.length)
 }
 
 function fromUrl(url, finishCallback) {

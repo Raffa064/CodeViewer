@@ -57,7 +57,7 @@ pre {
     padding: 10px;
     overflow: scroll;
     padding-top: calc(1.2rem + 20px);
-    animation: fade-in 1s forwards;
+    animation: fade-in 0.7s forwards;
 }
 
 pre * {
@@ -116,7 +116,7 @@ code {
     backdrop-filter: blur(2px);
     transition: 1s;
     opacity: 0;
-    animation: fade-out 3s;
+    animation: fade-out 4s linear, shake 2s linear;
 }
 
 #click-n-copy:hover {
@@ -158,11 +158,26 @@ code {
 }
 
 @keyframes fade-out {
-    0% {
+    0%, 30% {
         opacity: 1;
     }
 
     100% {
         opacity: 0;
+    }
+}
+
+
+@keyframes shake {
+    0%, 40%, 80% {
+        transform: rotate(5deg);
+    }
+    
+    20%, 60% {
+        transform: rotate(-5deg);
+    }
+    
+    100% {
+        transform: rotate(0deg);
     }
 }
