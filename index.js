@@ -69,14 +69,16 @@ function showCode(firstTry = true) {
 }
 
 function addZoom(elt) {
-    const size = () => parseInt(window.getComputedStyle(elt).fontSize)
+    const size = () => {
+        return parseInt(window.getComputedStyle(elt).fontSize)
+    }
+    
     const setSize = (size) => {
-        elt.style.fontSize = size + 'px'
+        elt.style.fontSize = Math.max(5, size) + 'px'
     }
     
     // Keyboard zoom
     window.addEventListener('keydown', (e) => {
-        e.preventDefault()
         console.log(e.key)
         const keys = {
             "-": -1,
@@ -86,15 +88,18 @@ function addZoom(elt) {
             "k": -1,
             "l": 1
         }
-        if (keys[e.key]) setSize(size() + keys[e.key])
+        if (keys[e.key]) {
+            e.preventDefault()
+            setSize(size() + keys[e.key])
+        }
     })
 
     //Pinch zoom
     var initialDistance = 0
-    var initialFontSize
+    var initialFontSize = size()
     elt.addEventListener('touchstart', (e) => {
-        e.preventDefault()
         if (e.touches.length == 2) {
+            e.preventDefault()
             initialDistance = Math.hypot(
                 e.touches[0].pageX - e.touches[1].pageX,
                 e.touches[0].pageY - e.touches[1].pageY,
@@ -105,17 +110,20 @@ function addZoom(elt) {
     })
 
     elt.ontouchmove = (e) => {
-        e.preventDefault()
         if (e.touches.length == 2) {
+            e.preventDefault()
             const distance = Math.hypot(
                 e.touches[0].pageX - e.touches[1].pageX,
                 e.touches[0].pageY - e.touches[1].pageY,
             );
             
             const delta = distance - initialDistance;
-            
-            setSize(initialFontSize * delta * 0.005)
+            if (Math.abs(delta) > 10) setSize(initialFontSize + delta * 0.05)
         }
+    }
+    
+    elt.touchend = () => {
+        initialDistance = 0
     }
 }
 
