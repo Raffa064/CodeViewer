@@ -1,0 +1,168 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -ms-touch-select: none;
+}
+
+body,
+#output {
+    width: 100vw;
+    height: 100vh;
+    background: #222;
+}
+
+#output {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading {
+    display: none;
+    width: 20ch;
+    color: #eee;
+    font-family: monospace;
+}
+
+#loading::after {
+    content: '';
+    animation: three-dots 1s infinite;
+}
+
+#error {
+    padding-inline: 20px;
+    color: #f02030;
+}
+
+#file-name {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+pre {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    overflow: scroll;
+    padding-top: calc(1.2rem + 20px);
+    animation: fade-in 1s forwards;
+}
+
+pre * {
+    font-family: monospace;
+    line-height: 1.rem;
+}
+
+code {
+    counter-reset: step;
+    counter-increment: step 0;
+}
+
+.line {
+    display: inline-block;
+    min-width: 100%;
+}
+
+.line::before {
+    width: 4ch;
+    content: counter(step) ' ';
+    counter-increment: step 1;
+    display: inline-block;
+    text-align: right;
+    color: #fff7;
+    padding-right: 4px;
+    border-right: 2px solid #fff5;
+    margin-right: 8px;
+    transition: .2s;
+}
+
+.line {
+    border: 1px solid #fff0;
+}
+
+.line:hover {
+    border: 1px dashed #fff1;
+}
+
+.line:hover::before {
+    color: #fffd;
+    border-right: 2px solid #fff7;
+}
+
+#click-n-copy {
+    top: 10px;
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    background: #2222;
+    border: 1px solid #aaa2;
+    backdrop-filter: blur(2px);
+    transition: 1s;
+    opacity: 0;
+    animation: fade-out 3s;
+}
+
+#click-n-copy:hover {
+    opacity: 1;
+}
+
+#click-n-copy.sucess {
+    color: #0f0;
+    background: #0202;
+    border: 1px solid #0a02;
+}
+
+#click-n-copy.error {
+    color: #f00;
+    background: #2005;
+    border: 1px solid #a007;
+}
+
+@keyframes three-dots {
+    0%, 100% {
+       content: '.'; 
+    }
+    25%, 75% {
+       content: '..'; 
+    }
+    50% {
+       content: '...'; 
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
