@@ -2,12 +2,13 @@
 const params = getUrlParams()
 
 var light = params["light"] || false
-var theme = params['theme'] || 'github-light'
+var theme = params['theme'] || 'github-dark'
 var lang = params['lang'] || 'js'
 var name = params['name'] || getNameFromUrl(params['code-url']) || 'Undefined.txt'
 var code = params['code'] || `console.log('Code Viewer');`
 
-var titleColor = params["title-color"] || light?"0008":"fff8"
+console.log(light)
+var titleColor = params["title-color"] || (light? "0008" : "fff8")
 
 // Light mode
 if (light) {
