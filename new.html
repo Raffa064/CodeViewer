@@ -463,7 +463,7 @@
 
             titleColor = titleColor.substring(1, titleColor.length) // Remove #
 
-            const HOST = window.location.protocol + "//" + window.location.host //'http://localhost:7700' or 'https://raffa064.github.io/CodeViewer'
+            const HOST = 'https://raffa064.github.io/CodeViewer' //window.location.protocol + "//" + window.location.host
             const url = HOST+`?light=${isLight(theme)}&theme=${theme}&title-color=${titleColor}&${codeMode}=${code}&lang=${lang}&name=${name}`
             iframeElt.contentWindow.location.replace(url)
 

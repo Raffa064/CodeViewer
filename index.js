@@ -20,7 +20,7 @@ if (light) {
 document.title = "CodeViewer: " + name
 const fileName = document.querySelector('#file-name')
 fileName.style["color"] = "#" + titleColor
-fileName.innerText = decodeURI(name) + " \"" + light + "\""
+fileName.innerText = decodeURI(name)
 fileName.onclick = () => {
     const url = params["code-url"]
     if (url) window.location.replace(url)
