@@ -1,13 +1,11 @@
 //URL params
 const params = getUrlParams()
 
-var light = params["light"] || false
+var light = (params["light"] || false) == "true"
 var theme = params['theme'] || 'github-dark'
 var lang = params['lang'] || 'js'
 var name = params['name'] || getNameFromUrl(params['code-url']) || 'Undefined.txt'
 var code = params['code'] || `console.log('Code Viewer');`
-
-console.log(light)
 var titleColor = params["title-color"] || (light? "0008" : "fff8")
 
 // Light mode
@@ -22,7 +20,7 @@ if (light) {
 document.title = "CodeViewer: " + name
 const fileName = document.querySelector('#file-name')
 fileName.style["color"] = "#" + titleColor
-fileName.innerText = decodeURI(name)
+fileName.innerText = decodeURI(name) + " \"" + light + "\""
 fileName.onclick = () => {
     const url = params["code-url"]
     if (url) window.location.replace(url)

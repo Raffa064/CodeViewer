@@ -175,11 +175,11 @@
         <br />
 
         <label>Title color</label><br />
-        <input oninput="updatePreview()" id="title-color" type="text" value="#ffffff88" />
+        <input oninput="updatePreview()" id="title-color" type="text" placeholder="Empty to default (HEX: #ff000070)"/>
         <br />
 
         <label>File name</label><br />
-        <input oninput="updatePreview()" id="name" placeholder="Empty for auto fill" />
+        <input oninput="updatePreview()" id="name" placeholder="Empty to default (FILE: Example.txt)" />
         <br />
 
         <input oninput="updatePreview()" name="toggle-url-mode" id="toggle-url-mode" type="checkbox" />
@@ -435,9 +435,9 @@
                 span.id = "output-url"
                 span.classList.add(modifier)
                 span.innerText = text
-                
+
                 outputUrlElt.replaceWith(span)
-                
+
                 setTimeout(() => {
                     span.replaceWith(outputUrlElt)
                 }, 2000)
@@ -463,10 +463,45 @@
 
             titleColor = titleColor.substring(1, titleColor.length) // Remove #
 
-            const url = `https://raffa064.github.io/CodeViewer?theme=${theme}&title-color=${titleColor}&${codeMode}=${code}&lang=${lang}&name=${name}`
+            const HOST = window.location.protocol + "//" + window.location.host //'http://localhost:7700' or 'https://raffa064.github.io/CodeViewer'
+            const url = HOST+`?light=${isLight(theme)}&theme=${theme}&title-color=${titleColor}&${codeMode}=${code}&lang=${lang}&name=${name}`
             iframeElt.contentWindow.location.replace(url)
 
             outputUrlElt.innerText = url;
+        }
+
+        function isLight(theme) {
+            return ({
+                'css-variables': true,
+                'dark-plus': false,
+                'dracula-soft': false,
+                'dracula': false,
+                'github-dark-dimmed': false,
+                'github-dark': false,
+                'github-light': true,
+                'hc_light': false,
+                'light-plus': true,
+                'material-theme-darker': false,
+                'material-theme-lighter': true,
+                'material-theme-ocean': false,
+                'material-theme-palenight': false,
+                'material-theme': false,
+                'min-dark': false,
+                'min-light': true,
+                'monokai': false,
+                'nord': false,
+                'one-dark-pro': false,
+                'poimandres': false,
+                'rose-pine-dawn': true,
+                'rose-pine-moon': false,
+                'rose-pine': false,
+                'slack-dark': false,
+                'slack-ochin': true,
+                'solarized-dark': false,
+                'solarized-light': true,
+                'vitesse-dark': false,
+                'vitesse-light': true
+            })[theme]
         }
     </script>
 </body>
