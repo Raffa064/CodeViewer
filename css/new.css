@@ -1,0 +1,132 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -ms-touch-select: none;
+}
+
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    background: #222;
+    grid-template-areas: 'preview'
+        'editor';
+    grid-template-rows: .5fr 1fr;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 800px) {
+    body {
+        grid-template-areas: 'preview editor';
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    #preview, #editor {
+        width: 50vw;
+        height: 100vh;
+        overflow: scroll;
+    }
+}
+
+#preview {
+    grid-area: preview;
+}
+
+#editor {
+    grid-area: editor;
+    color: #aaa;
+    padding: 10px;
+    overflow: scroll;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+label {
+    color: #eee;
+}
+
+input,
+textarea {
+    width: 100%;
+    max-height: 300px;
+    margin-block: 6px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #eee;
+    resize: none;
+}
+
+input[type="checkbox"] {
+    width: initial;
+}
+
+select {
+    margin-block: 4px;
+    padding: 8px;
+    border: 1px solid #fff1;
+    border-radius: 5px;
+    background: transparent;
+    color: #fff;
+}
+
+input+.toggler-label+.toggle {
+    display: none;
+}
+
+input+.toggler-label+.toggle+.toggle {
+    display: block;
+}
+
+input:checked+.toggler-label+.toggle {
+    display: block;
+}
+
+input:checked+.toggler-label+.toggle+.toggle {
+    display: none;
+}
+
+.toggle {
+    padding: 7px;
+    border: 1px solid #fff2;
+    border-radius: 4px;
+}
+
+#output-url {
+    display: block;
+    padding: 10px;
+    color: #aaa;
+    border: 1px solid #fff3;
+    border-radius: 4px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#output-url:hover {
+    color: #ddd;
+    border: 1px solid #fff6;
+}
+
+#output-url.sucess {
+    color: #0fd;
+    border: 1px solid #0fd6;
+}
+
+#output-url.error {
+    color: #f40;
+    border: 1px solid #f406;
+}

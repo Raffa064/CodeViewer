@@ -26,7 +26,6 @@ body,
 }
 
 #loading {
-    display: none;
     width: 20ch;
     color: #eee;
     font-family: monospace;

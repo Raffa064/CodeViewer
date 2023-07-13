@@ -12,7 +12,7 @@ var titleColor = params["title-color"] || (light? "0008" : "fff8")
 if (light) {
     var lightCss = document.createElement('link')
     lightCss.rel = "stylesheet"
-    lightCss.href = "index-light.css"
+    lightCss.href = "css/index-light.css"
     document.querySelector('head').appendChild(lightCss)
 }
 
@@ -174,6 +174,11 @@ function getNameFromUrl(url) {
 
 function fromUrl(url, finishCallback) {
     if (url == undefined) {
+        finishCallback(null)
+        return
+    }
+    
+    if (!url.startsWidth("http")) {
         finishCallback(null)
         return
     }
