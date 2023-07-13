@@ -1,11 +1,11 @@
 # Code Viewer
 
-A quick code share share viewer.
+A quick code share and viewer.
 
-To use the CodeViewer you can create your code url [from here](https://raffa064.github.io/CodeViewer/new.html), or manually write the url like:
+To share your code with CodeViewer you can create your code url on [our url editor](https://raffa064.github.io/CodeViewer/new.html), or manually write the url like:
 
 ```
-https://raffa064.github.io/CodeViewer?&lt;Your params here&gt;
+https://raffa064.github.io/CodeViewer?< Your params here >;
 ```
 
 NOTE: The params must be **separated by "&"**
@@ -56,7 +56,7 @@ The code highlights are provided by [Shiki Code Highlighter](https://github.com/
 - vitesse-dark
 - vitesse-light
 
-To use anyone, inset at the end of your url params list:
+To use anyone, insert on your url params list:
 
 ```
 https://raffa064.github.io/CodeViewer?&lt;Your params here&gt&theme=slack-dark;
