@@ -177,11 +177,6 @@ function fromUrl(url, finishCallback) {
         finishCallback(null)
         return
     }
-    
-    if (!url.startsWidth("http")) {
-        finishCallback(null)
-        return
-    }
 
     const text = fetch(url)
         .then(data => data.text())
